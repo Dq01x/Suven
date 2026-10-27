@@ -106,6 +106,9 @@ button.act{
 .citem.show{opacity:1;transform:none;pointer-events:auto;transition:opacity .45s ease,transform .45s ease;}
 .avatar-white{width:42px;height:42px;border-radius:50%;background:#ffffff;border:1px solid #d4d8da;flex:none;}
 .citem.you .avatar-white{background:#e8eaec;}
+/* 评论里"忧"的头像：放真图 */
+.av-you{width:42px;height:42px;border-radius:50%;background:#e8eaec;flex:none;overflow:hidden;position:relative;}
+.av-you img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .cbody .cname{font-size:16px;font-weight:800;}
 .cbody .chandle{font-size:14px;color:var(--gray);font-weight:500;}
 .cbody .ctext{font-size:17px;line-height:1.6;font-weight:500;}
@@ -118,10 +121,11 @@ button.act{
 .choice-opts{display:flex;gap:15px;justify-content:center;}
 .choice-btn{
   border:1.5px solid #cfd9de;background:#fff;color:var(--text);
-  font-size:18px;font-weight:700;padding:11px 42px;border-radius:999px;cursor:pointer;
+font-size:18px;font-weight:700;padding:11px 42px;border-radius:999px;cursor:pointer;
   transition:background .2s,color .2s;
 }
 .choice-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+
 .fade-in{animation:fadeIn .6s ease forwards;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
 .fade-out{animation:fadeOut .4s ease forwards;}
@@ -136,13 +140,13 @@ button.act{
 .jump-btn{
   flex:none;border:1.5px solid var(--blue);color:var(--blue);background:#fff;
   font-size:14px;font-weight:700;padding:8px 16px;border-radius:999px;cursor:pointer;
-  text-decoration:none;transition:background .2s,color .2s;
+text-decoration:none;transition:background .2s,color .2s;
 }
 .jump-btn:hover{background:var(--blue);color:#fff;}
 
 /* ===== 固定音乐按钮：小巧 + 描边音符 ===== */
 .music-btn{
-position:fixed;right:16px;bottom:24px;z-index:999;
+  position:fixed;right:16px;bottom:24px;z-index:999;
   width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
   background:#000000;color:#fff;display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 14px rgba(0,0,0,.28);
@@ -167,8 +171,8 @@ position:fixed;right:16px;bottom:24px;z-index:999;
     <div class="profile-banner"></div>
     <div class="profile-head">
       <div class="avatar">
-        <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-<img src="assets/Photo7.jpg" alt="头像" onerror="this.style.display='none'">
+<svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <img src="Photo7.jpg" alt="头像" onerror="this.style.display='none'">
       </div>
       <div class="name-row">
         <div>
@@ -181,8 +185,8 @@ position:fixed;right:16px;bottom:24px;z-index:999;
         <div class="sign">爱若爱到大雪满弓刀地步</div>
         <div class="meta-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>21 LE-P土象金牛 ISFJ</div>
         <div class="meta-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>四无人机 偶尔出没</div>
-        <div class="meta-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>可查阅好评330+状态稳定放心交给我</div>
-</div>
+<div class="meta-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>可查阅好评330+状态稳定放心交给我</div>
+      </div>
       <div class="stats"><b>0</b> 关注　<b>5.3w</b> 关注者</div>
     </div>
     <nav class="tabs">
@@ -199,20 +203,20 @@ position:fixed;right:16px;bottom:24px;z-index:999;
     <!-- 第一条推文 -->
     <article class="tweet reveal" id="tweet1">
       <div class="tweet-head">
-        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="assets/Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
-        <div><span class="tname">忧</span> <span class="handle">@用户053 · 刚刚</span></div>
+        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
+<div><span class="tname">忧</span> <span class="handle">@用户053 · 刚刚</span></div>
       </div>
       <div class="tweet-text">只拥抱的话，多少钱？</div>
       <div class="tweet-actions">
         <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
-<div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+        <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
         <button class="act like-btn" onclick="toggleLike(this)" aria-label="点赞"><span class="burst"></span><svg class="pop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
-        <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+<div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
       </div>
 
       <!-- 评论区 -->
       <div class="comments" id="comments1">
-<div class="conv" id="conv1">
+        <div class="conv" id="conv1">
           <!-- 选项1 -->
           <div class="comment-option" id="opt1">
             <button class="opt-card" onclick="revealStep(0)" aria-label="展开对话">
@@ -228,15 +232,15 @@ position:fixed;right:16px;bottom:24px;z-index:999;
             <div class="avatar-white"></div>
             <div class="cbody">
               <div class="cname">用户A <span class="chandle">@seven · 刚刚</span></div>
-              <div class="ctext">@忧，我们爱过吗？</div>
+<div class="ctext">@忧，我们爱过吗？</div>
             </div>
           </div>
           <div class="citem you" id="cy0">
-            <div class="avatar-white"></div>
+            <div class="av-you"><img src="Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
             <div class="cbody">
               <div class="cname">忧 <span class="chandle">@用户053</span></div>
               <div class="ctext">亲近会产生轻蔑，靠近会看清瑕疵，你想成为特殊还是我爱的那一个？</div>
-</div>
+            </div>
           </div>
           <!-- 选项2 -->
           <div class="comment-option" id="opt2" style="display:none;">
@@ -252,16 +256,16 @@ position:fixed;right:16px;bottom:24px;z-index:999;
           <div class="citem" id="ca1">
             <div class="avatar-white"></div>
             <div class="cbody">
-              <div class="cname">用户A <span class="chandle">@seven</span></div>
+<div class="cname">用户A <span class="chandle">@seven</span></div>
               <div class="ctext">…你想成为哪一个。</div>
             </div>
           </div>
           <div class="citem you" id="cy1">
-            <div class="avatar-white"></div>
+            <div class="av-you"><img src="Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
             <div class="cbody">
               <div class="cname">忧 <span class="chandle">@用户053</span></div>
               <div class="ctext">我想做你喝醉酒第一个打电话的，随便你咒骂恨我的人。</div>
-</div>
+            </div>
           </div>
         </div>
         <div class="toggle" id="toggle1">
@@ -276,15 +280,15 @@ position:fixed;right:16px;bottom:24px;z-index:999;
       <div class="choice-q">恨我，爱我，拯救我</div>
       <div class="choice-opts">
         <button class="choice-btn" onclick="pickChoice()">爱</button>
-        <button class="choice-btn" onclick="pickChoice()">恨</button>
+<button class="choice-btn" onclick="pickChoice()">恨</button>
       </div>
     </div>
 
     <!-- 第二条推文 -->
     <article class="tweet reveal" id="tweet2" style="display:none;">
       <div class="tweet-head">
-        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="assets/Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
-<div><span class="tname">忧</span> <span class="handle">@用户053</span></div>
+        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
+        <div><span class="tname">忧</span> <span class="handle">@用户053</span></div>
       </div>
       <div class="tweet-text">｜非常规虐
 中/低恋 直白剖析 理性淡漠 白话疏离
@@ -296,16 +300,16 @@ position:fixed;right:16px;bottom:24px;z-index:999;
 审视意味过重/过度自我不接</div>
       <div class="tweet-actions">
         <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
-        <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+<div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
         <button class="act like-btn" onclick="toggleLike(this)" aria-label="点赞"><span class="burst"></span><svg class="pop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
-<div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
       </div>
     </article>
 
     <!-- 第三条推文 -->
     <article class="tweet reveal" id="tweet3" style="display:none;">
-      <div class="tweet-head">
-        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="assets/Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
+<div class="tweet-head">
+        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
         <div><span class="tname">忧</span> <span class="handle">@用户053</span></div>
       </div>
       <div class="tweet-text">注意事项
@@ -321,33 +325,34 @@ position:fixed;right:16px;bottom:24px;z-index:999;
 
 &amp;
 我的虐恋不是一句话就刺痛要人哭出来的东西如果为了这一点而来 那么看到这里请说再见
+
 对“审视”这一类情绪很敏感不适将暂停单子按时间比例进行退款
 
 虐1h/半=10&amp;5min不满全退退款问题可小群与我沟通/直接联系派单
-存单群除约时间外不闲聊 请分清单内外私下人机一枚 不写陪评</div>
+存单群除约时间外不闲聊 请分清单内外私下人机一枚 不写陪</div>
       <div class="tweet-actions">
         <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
         <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
-        <button class="act like-btn" onclick="toggleLike(this)" aria-label="点赞"><span class="burst"></span><svg class="pop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
-<div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+<button class="act like-btn" onclick="toggleLike(this)" aria-label="点赞"><span class="burst"></span><svg class="pop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+        <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
       </div>
     </article>
 
     <!-- 第四条推文 -->
     <article class="tweet reveal" id="tweet4" style="display:none;">
       <div class="tweet-head">
-        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="assets/Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
-        <div><span class="tname">忧</span> <span class="handle">@用户053</span></div>
+        <div class="avatar sm"><svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#9aa5ad" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><img src="Photo7.jpg" alt="" onerror="this.style.display='none'"></div>
+<div><span class="tname">忧</span> <span class="handle">@用户053</span></div>
       </div>
       <div class="tweet-text"></div>
       <div class="jump-row"><div><div class="jump-label">头牌︱浅尝辄止</div></div><a class="jump-btn" href="https://www.kdocs.cn/l/ct2BWKeEPbNt" target="_blank" rel="noopener">点击跳转</a></div>
-<div class="jump-row"><div><div class="jump-label">板评︱至死方休</div></div><a class="jump-btn" href="https://www.kdocs.cn/l/cipSTyzrVnvc" target="_blank" rel="noopener">点击跳转</a></div>
+      <div class="jump-row"><div><div class="jump-label">板评︱至死方休</div></div><a class="jump-btn" href="https://www.kdocs.cn/l/cipSTyzrVnvc" target="_blank" rel="noopener">点击跳转</a></div>
       <div class="jump-row"><div><div class="jump-label">话术︱真心为你</div></div><a class="jump-btn" href="https://www.kdocs.cn/l/coa15EUNLIWV" target="_blank" rel="noopener">点击跳转</a></div>
       <div class="jump-row"><div><div class="jump-label">冠名︱游到海水变蓝</div></div><a class="jump-btn" href="https://www.kdocs.cn/l/cbbf9uptwODj" target="_blank" rel="noopener">点击跳转</a></div>
       <div class="tweet-actions">
         <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
-        <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
-<button class="act like-btn" onclick="toggleLike(this)" aria-label="点赞"><span class="burst"></span><svg class="pop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+<div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+        <button class="act like-btn" onclick="toggleLike(this)" aria-label="点赞"><span class="burst"></span><svg class="pop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
         <div class="act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
       </div>
     </article>
@@ -380,12 +385,12 @@ function revealStep(i){
   if(opt) opt.style.display='none';
   var ca = document.getElementById('ca'+i);
   ca.style.display='flex';
-  setTimeout(function(){ ca.classList.add('show'); }, 30);
+setTimeout(function(){ ca.classList.add('show'); }, 30);
   var cy = document.getElementById('cy'+i);
   setTimeout(function(){ cy.style.display='flex'; setTimeout(function(){ cy.classList.add('show'); }, 30); }, 750);
   if(i===0){
     setTimeout(function(){
-var o2 = document.getElementById('opt2');
+      var o2 = document.getElementById('opt2');
       o2.style.display='flex'; o2.classList.add('fade-in');
     }, 1450);
   } else {
@@ -406,7 +411,7 @@ function collapseConv(){
 }
 function expandConv(){
   var items = document.querySelectorAll('#conv1 .citem');
-  items.forEach(function(el,i){
+items.forEach(function(el,i){
     setTimeout(function(){
       el.style.display='flex';
       setTimeout(function(){ el.classList.add('show'); }, 30);
@@ -436,12 +441,12 @@ function pickChoice(){
   var targets = ['tweet1','tweet3','tweet4'];
   if(!('IntersectionObserver' in window)){
     targets.forEach(function(id){ var el=document.getElementById(id); if(el.style.display!=='none') el.classList.add('shown'); });
-    return;
+return;
   }
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(en){
       if(en.isIntersecting){ en.target.classList.add('shown'); io.unobserve(en.target); }
-});
+    });
   },{threshold:.12});
   targets.forEach(function(id){ var el=document.getElementById(id); if(el) io.observe(el); });
 })();
